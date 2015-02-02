@@ -19,16 +19,16 @@
 <div><%= f.text_field :age %></div>
 
 <div><%= f.label :size %></div>
-<div><%= f.text_field :size %></div>
+<div><%= f.select :size, ["Small", "Medium", "Large", "Extra Large"], {include_blank: "Size"} %></div>
 
 <div><%= f.label :play %></div>
-<div><%= f.text_field :play %></div>
+<div><%= f.select :play, ["Toy-Oriented", "Food-Oriented", "Tag/Wreslting Oriented" ], {include_blank: "Favorite Way to Play"} %></div>
 
 <div><%= f.label :gender %></div>
-<div><%= f.text_field :gender %></div>
+<div><%= f.select :gender, ["Female", "Male"] %></div>
 
 <div><%= f.label :personality %></div>
-<div><%= f.text_field :personality %></div>
+<div><%= f.select :personality, ["Submissive", "Dominant"], {include_blank: "Personality"} %></div>
 
 <div><%= f.label :bio %></div>
 <div><%= f.text_field :bio %></div>
