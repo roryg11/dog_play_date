@@ -1,0 +1,38 @@
+<h3>Dog Info</h3>
+
+<%= form_for @dog do |f| %>
+<% if @dog.errors.present? %>
+<ul>
+  <% @dog.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<div><%= f.label :name %></div>
+<div><%= f.text_field :name %></div>
+
+<div><%= f.label :breed %></div>
+<div><%= f.text_field :breed %></div>
+
+<div><%= f.label :age %></div>
+<div><%= f.text_field :age %></div>
+
+<div><%= f.label :size %></div>
+<div><%= f.text_field :size %></div>
+
+<div><%= f.label :play %></div>
+<div><%= f.text_field :play %></div>
+
+<div><%= f.label :gender %></div>
+<div><%= f.text_field :gender %></div>
+
+<div><%= f.label :personality %></div>
+<div><%= f.text_field :personality %></div>
+
+<div><%= f.label :bio %></div>
+<div><%= f.text_field :bio %></div>
+
+<%= f.submit "Submit" %>
+
+<% end %>
