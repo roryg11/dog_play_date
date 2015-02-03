@@ -1,0 +1,45 @@
+<div class="ui page grid">
+  <div class="row">
+    <div class="column padding-reset">
+      <div class="ui inverted segment image-div">
+        <h1 class= "ui huge header">
+          <span class = "left aligned vertical center">DOG PLAY DAYS</span>
+        </h1>
+        <h1 class = "ui huge header">
+          <span class="text"> Every dog needs</span><b data-text="User Interface"> friends</b>
+        </h1>
+          <a href="#" class="ui huge teal button">Sign-Up</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui three column padded page grid">
+  <% @dogs[0..6].each do |dog| %>
+  <div class="column">
+    <div class="ui fluid card">
+      <div class="image dimmable">
+        <div class="ui dimmer">
+          <div class="content">
+            <div class="center">
+              <div class="ui inverted button">Add Friend</div>
+            </div>
+          </div>
+        </div>
+        <%= image_tag(dog.image) %>
+      </div>
+      <div class="content">
+        <div class="header">Oscar</div>
+        <div class="meta">
+          Adoring Human: <%= link_to dog.user.name, class: "group" %>
+        </div>
+        <div class="description"><%= dog.bio %>...more</div>
+      </div>
+      <div class="extra content">
+        <%= image_tag(dog.user.avatar class: "ui avatar image") %>
+        <a href="#" class: "group">Message</a>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
