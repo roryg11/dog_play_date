@@ -22,6 +22,7 @@ class RegistrationsController < ApplicationController
                                 :age,
                                 :zipcode,
                                 :gender,
-                                :bio)
+                                :bio,
+                                :avatar)
   end
 end

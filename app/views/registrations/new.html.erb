@@ -1,6 +1,6 @@
 <h1>Sign Up</h1>
 
-<%= form_for @user, url: signup_path do |f| %>
+<%= form_for @user, url: signup_path, :html => { :multipart => true } do |f| %>
 
   <% if @user.errors.present? %>
   <ul>
@@ -9,6 +9,7 @@
     <% end %>
   </ul>
   <% end %>
+  <div><%= f.file_field :avatar %></div>
 
   <div><%= f.label :name %></div>
   <div><%= f.text_field :name %></div>

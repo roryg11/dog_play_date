@@ -1,5 +1,7 @@
 <h3>Dog Info</h3>
 
+<%= image_tag current_user.avatar %>
+
 <%= form_for @dog do |f| %>
 <% if @dog.errors.present? %>
 <ul>
@@ -11,6 +13,8 @@
 
 <div><%= f.label :name %></div>
 <div><%= f.text_field :name %></div>
+
+<div><%= f.file_field :image %></div>
 
 <div><%= f.label :breed %></div>
 <div><%= f.text_field :breed %></div>
