@@ -15,7 +15,7 @@
 </div>
 
 <div class="ui three column padded page grid">
-  <% @dogs[0..6].each do |dog| %>
+  <% @dogs.each do |dog| %>
   <div class="column">
     <div class="ui fluid card">
       <div class="image dimmable">
@@ -28,15 +28,17 @@
         </div>
         <%= image_tag(dog.image) %>
       </div>
-      <div class="content">
+      <div class="content" data= "">
         <div class="header">Oscar</div>
         <div class="meta">
           Adoring Human: <%= link_to dog.user.name, class: "group" %>
         </div>
-        <div class="description"><%= dog.bio %>...more</div>
+        <div class="description"><%= dog.bio %>...<span class="more-info" data-dog-id=<%="#{dog.id}"%> >more<span></div>
       </div>
       <div class="extra content">
-        <%= image_tag(dog.user.avatar class: "ui avatar image") %>
+        <div class="ui avatar image">
+          <%= image_tag(dog.user.avatar) %>
+        </div>
         <a href="#" class: "group">Message</a>
       </div>
     </div>

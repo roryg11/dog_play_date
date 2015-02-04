@@ -1,40 +1,55 @@
-<h1>Sign Up</h1>
+<div class="ui segment">
+  <h1>Sign Up</h1>
+</div>
 
-<%= form_for @user, url: signup_path, :html => { :multipart => true } do |f| %>
+<div class="ui form segment" id="new-form">
+  <div class="four fields">
+    <div class="field">
+      <label>Name</label>
+      <input placeholder="Name" id="new-user-name" type= "text">
+    </div>
+    <div class="field">
+      <label>E-mail</label>
+      <input id= "new-email" type="text" placeholder="E-mail@email.com">
+    </div>
+    <div class="field">
+      <label>Zipcode</label>
+      <input id="new-zipcode" type="text" placeholder = "94103">
+    </div>
+  </div>
 
-  <% if @user.errors.present? %>
-  <ul>
-    <% @user.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
-  <% end %>
-  <div><%= f.file_field :avatar %></div>
+  <div class="two fields">
+    <div class="field">
+      <label>Gender</label>
+      <div class="ui selection dropdown">
+        <div class="default text">Gender</div>
+        <i class="dropdown icon"></i>
+        <input id="new-gender" name="hidden-field" type="hidden">
+        <div class="menu">
+          <div class="item" data-value="Female">Female</div>
+          <div class="item" data-value="Male">Male</div>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Age</label>
+      <input id='new-age' type="text" placeholder = "0">
+    </div>
+  </div>
+  <div class="field">
+    <label>Tell Us A Little Bit About You</label>
+    <textarea id='new-bio'></textarea>
+  </div>
 
-  <div><%= f.label :name %></div>
-  <div><%= f.text_field :name %></div>
+  <div class="field">
+    <label>Password</label>
+    <input type="password">
+  </div>
 
-  <div><%= f.label :email %></div>
-  <div><%= f.email_field :email %></div>
+  <div class="field">
+    <label>Password Confirmation</label>
+    <input type="password">
+  </div>
 
-  <div><%= f.label :age %></div>
-  <div><%= f.number_field :age %></div>
-
-  <div><%= f.label :zipcode %></div>
-  <div><%= f.text_field :zipcode %></div>
-
-  <div><%= f.label :gender %></div>
-  <div><%= f.select :gender, ["Female", "Male"], {include_blank: "Gender"} %></div>
-
-  <div><%= f.label :bio %></div>
-  <div><%= f.text_field :bio %></div>
-
-  <div><%= f.label :password %></div>
-  <div><%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %></div>
-  <div><%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Sign up" %></div>
-
-<% end %>
+  <div class="ui submit button">Submit</div>
+</div>
