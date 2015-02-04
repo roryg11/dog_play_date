@@ -1,29 +1,15 @@
-<h1>Sign In</h1>
+<div class="ui form segment">
+  <h1>Sign-In</h1>
+  <div class="two fields">
+    <div class="field">
+      <label>E-mail</label>
+      <input type="text" id="email-sign-in"placeholder="E-mail@email.com">
+    </div>
 
-<%= form_tag signin_path do |f| %>
+  <div class="field">
+    <label>Password</label>
+    <input id = "password-input" type="password">
+  </div>
 
-<% if @sign_in_error %>
-<p>
-  <%= @sign_in_error %>
-</p>
-<% end %>
-
-<div>
-  <%= label_tag :email %>
+  <div class="ui submit button" id="sign-in-submit">Submit</div>
 </div>
-<div>
-  <%= email_field_tag :email %>
-</div>
-
-<div>
-  <%= label_tag :password %>
-</div>
-<div>
-  <%= password_field_tag :password %>
-</div>
-
-<div>
-  <%= submit_tag "Sign in" %>
-</div>
-
-<% end %>

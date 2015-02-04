@@ -1,0 +1,53 @@
+
+<div class="ui segment">
+  <h1>Editing <%= @user.name %>'s Profile</h1>
+</div>
+
+<div class=>
+
+</div>
+
+<h4>Upload a Profile Picture</h4>
+
+
+<div class="ui form segment">
+  <div class="four fields">
+    <div class="field">
+      <label>Name</label>
+      <input placeholder="Name" type= "text">
+    </div>
+    <div class="field">
+      <label>E-mail</label>
+      <input type="text" placeholder="E-mail@email.com">
+    </div>
+    <div class="field">
+      <label>Zipcode</label>
+      <input type="text" placeholder = "94103">
+    </div>
+  </div>
+
+  <div class="two fields">
+    <div class="field">
+      <label>Gender</label>
+      <div class="ui selection dropdown">
+        <div class="default text">Gender</div>
+        <i class="dropdown icon"></i>
+        <input name="hidden-field" type="hidden">
+        <div class="menu">
+          <div class="item" data-value="Female">Female</div>
+          <div class="item" data-value="Male">Male</div>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Age</label>
+      <input type="text" placeholder = "0">
+    </div>
+  </div>
+  <div class="field">
+    <label>Tell Us A Little Bit About You</label>
+    <textarea></textarea>
+  </div>
+
+  <div class="ui submit button" id="update" >Update</div>
+</div>
