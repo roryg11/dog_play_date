@@ -1,5 +1,38 @@
-<h1> Conversation with <%= @reciever.name  %> </h1>
-<% @messages.each do |message| %>
-  <%= message.user_id %>
-  <%= message.body %>
-<% end %>
+<div class="ui grid">
+  <div class="row">
+    <div class="five wide column":></div>
+    <div class="six wide column":>
+      <div class="ui segment">
+        <div class="ui comments">
+          <h3 class="ui dividing header">Conversation with <%= @reciever.name  %></h3>
+          <div id="container">
+            <% @messages.each do |message| %>
+            <div class="comment">
+              <a class="avatar">
+                <!--  image_tag message.user1_id + '.jpg', class: "avatar"  -->
+              </a>
+              <div class="content">
+                <a class="author"><%= message.user_id %></a>
+                <div class="metadata">
+                  <span class="date"> <%= message.created_at %></span>
+                </div>
+                <div class="text">
+                  <%= message.body %>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+          <form class="ui reply form">
+            <div class="field">
+              <textarea></textarea>
+            </div>
+            <div class="ui blue labeled submit icon button">
+              <i class="icon edit"></i> <%= link_to 'New Message', new_conversation_message_path(@conversation) %>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
