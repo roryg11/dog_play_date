@@ -1,0 +1,5 @@
+<h1> Conversation with <%= @reciever.name  %> </h1>
+<% @messages.each do |message| %>
+  <%= message.user_id %>
+  <%= message.body %>
+<% end %>

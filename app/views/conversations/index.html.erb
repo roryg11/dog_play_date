@@ -1,0 +1,7 @@
+<% @conversations.each do |conversation| %>
+  <ul> <%= link_to conversation.id, conversation %> 
+    <li><%= conversation.sender_id %></li>
+    <li><%= conversation.recipient_id %></li>
+  </ul>
+
+<% end %>
