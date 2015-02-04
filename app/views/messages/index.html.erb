@@ -1,0 +1,7 @@
+Messages:
+
+<% @messages.each do |message| %>
+<%= message.body %>
+<% end %>
+
+<%= link_to 'New Message', new_conversation_message_path(@conversation) %>
