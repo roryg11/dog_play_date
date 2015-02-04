@@ -3,53 +3,58 @@
 </div>
 
 <div class="ui form segment" id="new-form">
-  <div class="four fields">
-    <div class="field">
-      <label>Name</label>
-      <input placeholder="Name" id="new-user-name" type= "text">
-    </div>
-    <div class="field">
-      <label>E-mail</label>
-      <input id= "new-email" type="text" placeholder="E-mail@email.com">
-    </div>
-    <div class="field">
-      <label>Zipcode</label>
-      <input id="new-zipcode" type="text" placeholder = "94103">
-    </div>
-  </div>
-
-  <div class="two fields">
-    <div class="field">
-      <label>Gender</label>
-      <div class="ui selection dropdown">
-        <div class="default text">Gender</div>
-        <i class="dropdown icon"></i>
-        <input id="new-gender" name="hidden-field" type="hidden">
-        <div class="menu">
-          <div class="item" data-value="Female">Female</div>
-          <div class="item" data-value="Male">Male</div>
+  <form id="form_id" action="/sign-up" method="post">
+      <div class="three fields">
+        <div class="field">
+          <label>Name</label>
+          <input placeholder="Name" name="user[name]" id="new-user-name" type= "text">
+        </div>
+        <div class="field">
+          <label>E-mail</label>
+          <input id= "new-email" type="text" name="user[email]" placeholder="E-mail@email.com">
+        </div>
+        <div class="field">
+          <label>Zipcode</label>
+          <input id="new-zipcode" name="user[zipcode]" type="text" placeholder = "94103">
         </div>
       </div>
-    </div>
-    <div class="field">
-      <label>Age</label>
-      <input id='new-age' type="text" placeholder = "0">
-    </div>
-  </div>
-  <div class="field">
-    <label>Tell Us A Little Bit About You</label>
-    <textarea id='new-bio'></textarea>
-  </div>
+      <div class="two fields">
+        <div class="field">
+          <label>Gender</label>
+          <div class="ui selection dropdown">
+            <div class="default text">Gender</div>
+            <i class="dropdown icon"></i>
+            <input id="new-gender" name="hidden-field" type="hidden">
+            <div class="menu">
+              <div class="item" data-value="Female">Female</div>
+              <div class="item" data-value="Male">Male</div>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Age</label>
+          <input id='new-age' type="text" name="user[age]" placeholder = "0">
+        </div>
+      </div>
+      <div class="field">
+        <label>Tell Us A Little Bit About You</label>
+        <textarea id='new-bio' name="user[bio]"></textarea>
+      </div>
 
-  <div class="field">
-    <label>Password</label>
-    <input type="password">
-  </div>
+      <div class="field">
+        <label>Upload a Profile Picture</label>
+        <input type= "file" name="user[avatar]">
+      </div>
 
-  <div class="field">
-    <label>Password Confirmation</label>
-    <input type="password">
-  </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" name="user[password]">
+      </div>
 
-  <div class="ui submit button">Submit</div>
+      <div class="field">
+        <label>Password Confirmation</label>
+        <input type="password" name="user[password_confirmation]">
+      </div>
+    <input type="Submit" class="ui submit button" id="signup-submit-button">
+  </form>
 </div>
