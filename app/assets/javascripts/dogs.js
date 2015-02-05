@@ -1,6 +1,5 @@
 $(document).ready(function(){
   $('.description').on('click', 'span', function(){
-    console.log("YOU CLICKED")
     var dogId = $(this).data('dog-id');
     var div = $(this).parent().find('div');
     div.fadeIn().toggleClass('inactive');
@@ -9,7 +8,7 @@ $(document).ready(function(){
       div.fadeOut().toggleClass('inactive');
     }else{
       $(this).text('less');
-      };
+      }
   });
 
   $('.card').on('click', 'div.header', function(){

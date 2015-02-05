@@ -3,7 +3,33 @@ class DogsController<ApplicationController
 
   def index
     @dogs = Dog.all
+    if !params[:g].blank?
+      puts "filtering by gender"
+      @dogs = @dogs.where(:gender=> params[:g])
+    end
+    if !params[:n].blank?
+      puts "filtering by gender"
+      dog_name = params[:n].downcase
+      @dogs = @dogs.where("LOWER (name) LIKE ?", "%#{dog_name}%")
+    end
+    if !params[:s].blank?
+      dog_size = params[:s].downcase
+      @dogs = @dogs.where("LOWER (size) LIKE ?", "%#{dog_size}%")
+    end
+    if !params[:p].blank?
+      dog_personality = params[:p].downcase
+      @dogs = @dogs.where("LOWER (personality) LIKE ?", "%#{dog_personality}%")
+    end
+    if !params[:y].blank?
+      dog_play = params[:y].downcase
+      @dogs = @dogs.where("LOWER (play) LIKE ?", "%#{dog_play}%")
+    end
+    if !params[:a].blank?
+      dog_age = params[:a].downcase
+      @dogs = @dogs.where("LOWER (age) LIKE ?", "%#{dog_age}%")
+    end
   end
+
   def new
     @dog = Dog.new
   end
