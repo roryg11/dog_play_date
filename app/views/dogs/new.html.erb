@@ -1,68 +1,41 @@
 <h3>Dog Info</h3>
 
-<%= image_tag current_user.avatar %>
+<%= image_tag current_user.avatar, class: "ui avatar image" %>
+<%= current_user.name %>
 
-<%= form_for @dog do |f| %>
+<div class="ui form segment">
+  <%= form_for @dog do |f| %>
 
-<% if @dog.errors.present? %>
-<ul>
-  <% @dog.errors.full_messages.each do |message| %>
-  <li><%= message %></li>
+  <% if @dog.errors.present? %>
+  <ul>
+    <% @dog.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
   <% end %>
-</ul>
-<% end %>
 
-<div><%= f.label :name %></div>
-<div><%= f.text_field :name %></div>
-
-<div><%= f.file_field :image %></div>
-
-<div><%= f.label :breed %></div>
-<div><%= f.text_field :breed %></div>
-
-<div><%= f.label :age %></div>
-<div><%= f.text_field :age %></div>
-
-<div><%= f.label :size %></div>
-<div><%= f.select :size, ["Small", "Medium", "Large", "Extra Large"], {include_blank: "Size"} %></div>
-
-<div><%= f.label :play %></div>
-<div><%= f.select :play, ["Toy-Oriented", "Food-Oriented", "Tag/Wreslting Oriented" ], {include_blank: "Favorite Way to Play"} %></div>
-
-<div><%= f.label :gender %></div>
-<div><%= f.select :gender, ["Female", "Male"] %></div>
-
-<div><%= f.label :personality %></div>
-<div><%= f.select :personality, ["Submissive", "Dominant"], {include_blank: "Personality"} %></div>
-
-<div><%= f.label :bio %></div>
-<div><%= f.text_field :bio %></div>
-
-<%= f.submit "Submit" %>
-
-<% end %>
-
-<form id="new-dog-form" action="/dogs" method="post" class="inactive">
-  <h3>Add Your Dog</h3>
   <div class="three fields">
     <div class="field">
-      <label>Name</label>
-      <input placeholder="Name" name="dog[name]" id="new-dog-name" type= "text">
+      <%= f.label :name %>
+      <div class="field">
+        <%= f.text_field :name %>
+      </div>
     </div>
     <div class="field">
-      <label>Upload a Profile Picture</label>
-      <input type= "file" name="dog[image]">
+      <%= f.label :breed %>
+      <div class="field">
+        <%= f.text_field :breed %>
+      </div>
     </div>
     <div class="field">
-      <label>Breed</label>
-      <input id= "new-dog-breed" type="text" name="dog[breed]" placeholder="E-mail@email.com">
-    </div>
-    <div class="field">
-      <label>Age</label>
-      <input id="new-dog-age" name="dog[age]" type="text" placeholder = "1">
+      <%= f.label :age %>
+      <div class="field">
+        <%= f.text_field :age %>
+      </div>
     </div>
   </div>
-  <div class="two fields">
+
+  <div class="three fields">
     <div class="field">
       <label>Gender</label>
       <div class="ui selection dropdown">
@@ -78,7 +51,7 @@
     <div class="field">
       <label>Size</label>
       <div class="ui selection dropdown">
-        <div class="default text">size</div>
+        <div class="default text">Size</div>
         <i class="dropdown icon"></i>
         <input id="new-dog-size" name="dog[size]" type="hidden">
         <div class="menu">
@@ -89,48 +62,56 @@
         </div>
       </div>
     </div>
+
     <div class="field">
-      <label>Play Type</label>
+      <label>Play</label>
       <div class="ui selection dropdown">
         <div class="default text">Play</div>
         <i class="dropdown icon"></i>
-        <input id="new-dog-play" name="dog[play]" type="hidden">
+        <input id="new-play-attr" name="dog[play]" type="hidden">
         <div class="menu">
-          <div class="item" data-value="Small">Toy-Oriented</div>
-          <div class="item" data-value="Medium">Food-Oriented</div>
-          <div class="item" data-value="Large">Wrestling/Tag-Oriented</div>
+          <div class="item" data-value="toy-oriented">Toy-Oriented</div>
+          <div class="item" data-value="Food-Oriented">Food-Oriented</div>
+          <div class="item" data-value="Tag/Wrestling-Oriented">Tag/Wrestling-Oriented</div>
         </div>
       </div>
     </div>
-    <div class="field">
-      <label>Play Type</label>
-      <div class="ui selection dropdown">
-        <div class="default text">Play</div>
-        <i class="dropdown icon"></i>
-        <input id="new-dog-play" name="dog[play]" type="hidden">
-        <div class="menu">
-          <div class="item" data-value="Small">Toy-Oriented</div>
-          <div class="item" data-value="Medium">Food-Oriented</div>
-          <div class="item" data-value="Large">Wrestling/Tag-Oriented</div>
-        </div>
-      </div>
-    </div>
+  </div>
+
+
+  <div id="two fields">
     <div class="field">
       <label>Personality</label>
       <div class="ui selection dropdown">
         <div class="default text">Personality</div>
         <i class="dropdown icon"></i>
-        <input id="new-dog-personality" name="dog[personality]" type="hidden">
+        <input id="new-play-attr" name="dog[personality]" type="hidden">
         <div class="menu">
-          <div class="item" data-value="Small">Submissive</div>
-          <div class="item" data-value="Medium">Dominant</div>
+          <div class="item" data-value="submissive">Submissive</div>
+          <div class="item" data-value="Dominant">Dominant</div>
         </div>
       </div>
     </div>
+
+    <div class="field">
+      <%= f.label "Tell Us A Little Bit About Your Pup" %>
+      <div class="field">
+        <%= f.text_area :bio %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <label>Tell Us A Little Bit About Your Dog</label>
-    <textarea id="new-dog-bio" name="dog[bio]"></textarea>
+
+  <div class="two fields">
+    <div class="field">
+      <%= f.label "Upload a Picture of Your Pup" %>
+      <div class="field">
+        <%= f.file_field :image %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.submit "Enter Dog Info", class: "ui submit button"  %>
+    </div>
   </div>
-  <input type="Submit" class="ui submit button" id="new-dog-submit-button">
-</form>
+  <% end %>
+</div>
