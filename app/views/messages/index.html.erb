@@ -30,7 +30,7 @@
             </div>
             <div class="comment" id="user_name" data-id="<%=User.find(current_user.id).name %>">
               <a class="avatar" >
-                <%= image_tag current_user.avatar, class: "avatar", id: "current_user" %>
+                <%= image_tag current_user.avatar, class: "ui avatar image", id: "current_user" %>
               </a>
             </div>
             <div class="ui blue labeled submit icon button" id = "reply" data-id="<%= current_user.id %>">
