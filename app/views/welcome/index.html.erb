@@ -15,46 +15,52 @@
 </div>
 
 
+<%= @length %>
+
 <div class="ui three column padded page grid">
-  <% @dogs.each do |dog| %>
+
+  <% @dogs.in_groups(3) do |column_dogs| %>
   <div class="column">
-    <div class="ui fluid card">
-      <div class="image dimmable">
-        <div class="ui dimmer">
-          <div class="content">
-            <div class="center">
-              <div class="ui inverted button">Add Friend</div>
+    <% column_dogs.each do |dog| %>
+      <% break if dog.nil? %>
+      <div class="ui fluid card">
+        <div class="image dimmable">
+          <div class="ui dimmer">
+            <div class="content">
+              <div class="center">
+                <div class="ui inverted button">Add Friend</div>
+              </div>
             </div>
           </div>
+          <%= image_tag(dog.image) %>
         </div>
-        <%= image_tag(dog.image) %>
-      </div>
-      <div class="content" data= "">
-        <div class="header"><%= dog.name %></div>
-        <div class="meta">
-          Adoring Human: <%= link_to dog.user.name, user_path(dog.user), class: "group" %>
-        </div>
-        <div class="description"><%= dog.bio %>...<span class="more-info" data-dog-id=<%="#{dog.id}"%> >more</span>
-          <div class="inactive">
-            <ul>
-              <li><strong>Breed: </strong> dog.breed </li>
-              <li><strong>Age: </strong> dog.age </li>
-              <li><strong>Gender: </strong>dog.gender</li>
-              <li><strong>Size: </strong>dog.size</li>
-              <li><strong>Play: </strong>dog.play</li>
-              <li><strong>Personality: </strong>dog.personality</li>
-            </ul>
+        <div class="content" data= "">
+          <div class="header"><%= dog.name %></div>
+          <div class="meta">
+            Adoring Human: <%= link_to dog.user.name, user_path(dog.user), class: "group" %>
           </div>
-        </div>
+          <div class="description"><%= dog.bio %>...<span class="more-info" data-dog-id=<%="#{dog.id}"%> >more</span>
+            <div class="inactive">
+              <ul>
+                <li><strong>Breed: </strong> <%= dog.breed %> </li>
+                <li><strong>Age: </strong> <%= dog.age %></li>
+                <li><strong>Gender: </strong><%= dog.gender %></li>
+                <li><strong>Size: </strong><%= dog.size %></li>
+                <li><strong>Play: </strong><%= dog.play %></li>
+                <li><strong>Personality: </strong><%= dog.personality %></li>
+              </ul>
+            </div>
+          </div>
 
-      </div>
-      <div class="extra content">
-        <div class="ui avatar image">
-          <%= image_tag(dog.user.avatar) %>
         </div>
-        <a href="#" class: "group">Message</a>
+        <div class="extra content">
+          <div class="ui avatar image">
+            <%= image_tag(dog.user.avatar) %>
+          </div>
+          <a href="#" class: "group">Message</a>
+        </div>
       </div>
+      <% end %>
     </div>
-  </div>
   <% end %>
 </div>
