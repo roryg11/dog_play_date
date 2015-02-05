@@ -14,6 +14,7 @@
   </div>
 </div>
 
+
 <div class="ui three column padded page grid">
   <% @dogs.each do |dog| %>
   <div class="column">
@@ -29,9 +30,9 @@
         <%= image_tag(dog.image) %>
       </div>
       <div class="content" data= "">
-        <div class="header">Oscar</div>
+        <div class="header"><%= dog.name %></div>
         <div class="meta">
-          Adoring Human: <%= link_to dog.user.name, class: "group" %>
+          Adoring Human: <%= link_to dog.user.name, users_path(dog.user), class: "group" %>
         </div>
         <div class="description"><%= dog.bio %>...<span class="more-info" data-dog-id=<%="#{dog.id}"%> >more<span></div>
       </div>
