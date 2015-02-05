@@ -24,6 +24,15 @@
     </div>
   </div>
 
+  <% if notice %>
+    <div class="ui positive message">
+      <i class="close icon"></i>
+      <div class="header">
+        <p id="notice" class="text-center"><%= notice %></p>
+      </div>
+    </div>
+  <% end %>
+
 <%= yield %>
 
 <script charset="utf-8">

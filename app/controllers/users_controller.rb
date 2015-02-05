@@ -20,8 +20,11 @@ class UsersController < ApplicationController
     @user.update(user_params)
     if @user.save
       redirect_to user_path
+      flash[:notice] = "Your information was successfully updated."
     else
       render :edit
+      flash[:notice] = "Your information could not be saved."
+
     end
   end
 

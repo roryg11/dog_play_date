@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  validates :name, :email, :zipcode,  presence: true
+  validates :email, uniqueness: true
+
   has_many :dogs
   has_secure_password
 

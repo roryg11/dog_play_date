@@ -4,6 +4,9 @@
 
 <div class="ui form segment">
   <%= form_for @user, url: signup_path, html: {class: "ui form"} do |f| %>
+
+  <%= render 'shared/errors', object: @user %>
+  
     <div class="three fields">
       <div class="field">
         <%= f.label :name %>
