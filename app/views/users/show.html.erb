@@ -1,39 +1,50 @@
-<div class="ui secondary segment">
-  <h1 class="huge"><%= @user.name %></h1>
-</div>
-
 <div class="ui segment">
-  <a class="ui ribbon label">Profile</a>
+  <a class="ui ribbon label"><%= @user.name %></a>
 
-  <h4>
-    <div class="ui small circular image">
-      <%= image_tag(@user.avatar) %>
+  <div class="ui small circular image">
+    <%= image_tag(@user.avatar) %>
+  </div>
+
+  <div class="ui segment">
+    <div class="content">
+      <p><%= @user.email %></p>
+      <p><%= @user.zipcode %></p>
+      <p><%= @user.age %></p>
+      <p><%= @user.gender %></p>
+      <p><%= @user.bio %></p>
     </div>
-    <%= @user.name %>
-    <%= link_to "Edit", edit_user_path(@user), class: "ui teal basic button" %>
-  </h4>
-  <p><%= @user.email %></p>
-  <p><%= @user.zipcode %></p>
-  <p><%= @user.age %></p>
-  <p><%= @user.gender %></p>
-  <p><%= @user.bio %></p>
+  </div>
+
+  <div class="ui button">
+    <% if current_user.id == @user.id %>
+    <%= link_to "Edit", edit_user_path(@user) %>
+    <% end %>
+  </div>
 </div>
 
-<div class="ui segment">
-  <h4> <%= "#{@user.name}'s Dogs" %></h4>
-  <% @user.dogs.each do |dog| %>
-    <div class="ui card">
-      <div class="content">
-        <div class="header">
-          <div class="ui avatar image">
-            <%= image_tag(dog.image) %>
+<div class="ui segment three column grid">
+
+  <a class="ui ribbon label"><%= @user.name %>'s Dogs</a>
+
+    <% @user.dogs.each do |dog| %>
+      <div class="column">
+        <div class="ui card">
+          <div class="content">
+            <div class="header">
+              <div class="ui avatar image">
+                <%= image_tag(dog.image) %>
+              </div>
+              <%= dog.name %>
+            </div>
+            <div class="description">
+              <%= dog.bio %>
+            </div>
           </div>
-          <%= dog.name %>
-        </div>
-        <div class="description">
-          <%= dog.bio %>
         </div>
       </div>
-    </div>
-  <% end  %>
+    <% end  %>
+</div>
+
+<div class="ui button">
+  <%= link_to "Add Dog", new_dog_path %>
 </div>

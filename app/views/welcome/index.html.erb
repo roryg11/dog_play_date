@@ -8,7 +8,7 @@
         <h1 class = "ui huge header">
           <span class="text"> Every dog needs</span><b data-text="User Interface"> friends</b>
         </h1>
-          <a href="#" class="ui huge teal button">Sign-Up</a>
+          <%= link_to "Sign Up", signup_path, class:"ui huge teal button" %>
       </div>
     </div>
   </div>
@@ -32,9 +32,21 @@
       <div class="content" data= "">
         <div class="header"><%= dog.name %></div>
         <div class="meta">
-          Adoring Human: <%= link_to dog.user.name, users_path(dog.user), class: "group" %>
+          Adoring Human: <%= link_to dog.user.name, user_path(dog.user), class: "group" %>
         </div>
-        <div class="description"><%= dog.bio %>...<span class="more-info" data-dog-id=<%="#{dog.id}"%> >more<span></div>
+        <div class="description"><%= dog.bio %>...<span class="more-info" data-dog-id=<%="#{dog.id}"%> >more</span>
+          <div class="inactive">
+            <ul>
+              <li><strong>Breed: </strong><%= dog.breed %></li>
+              <li><strong>Age: </strong><%= dog.age %></li>
+              <li><strong>Gender: </strong><%= dog.gender %></li>
+              <li><strong>Size: </strong><%= dog.size %></li>
+              <li><strong>Play: </strong><%= dog.play %></li>
+              <li><strong>Personality: </strong><%= dog.personality %></li>
+            </ul>
+          </div>
+        </div>
+
       </div>
       <div class="extra content">
         <div class="ui avatar image">
