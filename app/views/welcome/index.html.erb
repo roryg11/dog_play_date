@@ -1,11 +1,11 @@
 <div class="ui page grid">
   <div class="row">
-    <div class="column padding-reset">
-      <div class="ui inverted segment image-div">
-        <h1 class= "ui huge header">
+    <div class="column">
+      <div class="ui segment image-div">
+        <h1 class= "ui inverted huge header">
           <span class = "left aligned vertical center">DOG PLAY DAYS</span>
         </h1>
-        <h1 class = "ui huge header">
+        <h1 class = "ui inverted huge header">
           <span class="text"> Every dog needs</span><b data-text="User Interface"> friends</b>
         </h1>
           <%= link_to "Sign Up", signup_path, class:"ui huge teal button" %>
@@ -37,12 +37,12 @@
         <div class="description"><%= dog.bio %>...<span class="more-info" data-dog-id=<%="#{dog.id}"%> >more</span>
           <div class="inactive">
             <ul>
-              <li><strong>Breed: </strong><%= dog.breed %></li>
-              <li><strong>Age: </strong><%= dog.age %></li>
-              <li><strong>Gender: </strong><%= dog.gender %></li>
-              <li><strong>Size: </strong><%= dog.size %></li>
-              <li><strong>Play: </strong><%= dog.play %></li>
-              <li><strong>Personality: </strong><%= dog.personality %></li>
+              <li><strong>Breed: </strong> dog.breed </li>
+              <li><strong>Age: </strong> dog.age </li>
+              <li><strong>Gender: </strong>dog.gender</li>
+              <li><strong>Size: </strong>dog.size</li>
+              <li><strong>Play: </strong>dog.play</li>
+              <li><strong>Personality: </strong>dog.personality</li>
             </ul>
           </div>
         </div>

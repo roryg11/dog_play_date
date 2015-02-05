@@ -1,10 +1,14 @@
 $(document).ready(function(){
   $('.description').on('click', 'span', function(){
+    console.log("YOU CLICKED")
     var dogId = $(this).data('dog-id');
     var div = $(this).parent().find('div');
-    div.toggleClass('inactive');
+    div.fadeIn().toggleClass('inactive');
     if(div.hasClass('inactive')){
       $(this).text('more');
-    }else{$(this).text('less')};
+      div.fadeOut().toggleClass('inactive');
+    }else{
+      $(this).text('less');
+      };
   });
 });
