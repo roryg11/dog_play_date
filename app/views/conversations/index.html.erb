@@ -1,7 +1,11 @@
+<h3>Inbox</h3>
 <% @conversations.each do |conversation| %>
-  <ul> <%= link_to conversation.id, conversation %> 
-    <li><%= conversation.sender_id %></li>
-    <li><%= conversation.recipient_id %></li>
-  </ul>
-
+  <% if conversation.sender_id == current_user.id %>
+      <% sender = User.find(conversation.sender_id) %>
+      <% recipient = User.find(conversation.recipient_id) %>
+    <ul> <%= link_to recipient.name, conversation_messages_path(conversation) %>
+      <li><%= sender.name %></li><li><%=conversation.sender_id%></li>
+      <li><%= recipient.name %></li><li><%=conversation.recipient_id%></li>
+    </ul>
+  <% end %>
 <% end %>
