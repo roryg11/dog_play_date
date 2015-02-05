@@ -1,15 +1,25 @@
+
+<h1>Sign In</h1>
 <div class="ui form segment">
-  <h1>Sign-In</h1>
+  <%= form_tag signin_path html: {class: "ui form segment"} do |f| %>
   <div class="two fields">
     <div class="field">
-      <label>E-mail</label>
-      <input type="text" id="email-sign-in"placeholder="E-mail@email.com">
+      <%= label_tag :email %>
+      <div class="field">
+        <%= email_field_tag :email %>
+      </div>
     </div>
 
-  <div class="field">
-    <label>Password</label>
-    <input id = "password-input" type="password">
+    <div class="field">
+      <%= label_tag :password %>
+      <div class="field">
+        <%= password_field_tag :password %>
+      </div>
+    </div>
+    <div class="field">
+      <%= submit_tag "Sign In", class: "ui submit button" %>
+    </div>
   </div>
+  <% end %>
 
-  <div class="ui submit button" id="sign-in-submit">Submit</div>
 </div>
