@@ -1,3 +1,4 @@
+require 'pry'
 class MessagesController < ApplicationController
   before_action do
     @conversation = Conversation.find(params[:conversation_id])
@@ -5,7 +6,6 @@ class MessagesController < ApplicationController
 
   def index
     @messages = @conversation.messages
-
   end
 
   def new

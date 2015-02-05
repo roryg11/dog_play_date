@@ -4,7 +4,6 @@ $(document).ready(function(){
     var body = $('textarea').val();
     var conversation_id = $('h3')[0].id;
     var url = '/conversations/'+ conversation_id + '/messages';
-    console.log(sender_id);
     $.ajax(url, {type: 'post',
     data: {
       message:{
@@ -14,6 +13,7 @@ $(document).ready(function(){
       }
     }
   }).done(function(comment){
+    //console.log(comment);
     $('textarea').val('');
     var image = $('#current_user')[0].src;
     var userName = $('#user_name').data('id');

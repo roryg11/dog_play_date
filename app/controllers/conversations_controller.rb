@@ -1,3 +1,4 @@
+require 'pry'
 class ConversationsController < ApplicationController
   before_action :authenticate_user
 
@@ -6,29 +7,20 @@ class ConversationsController < ApplicationController
     @conversations = Conversation.all
   end
 
-  def new
-    @conversation = Conversation.new
-  end
-
   def create
-    @conversation = Conversation.new(conversation_params)
-    if @conversation.save
-      render conversations_path
+    if Conversation.between(params[:sender_id],params[:recipient_id]).present?
+      @conversation = Conversation.between(params[:sender_id],params[:recipient_id]).first
     else
-      render :new
+      @conversation = Conversation.create!(conversation_params)
     end
+
+    redirect_to conversation_messages_path(@conversation)
   end
 
-  def show
-    @conversation = Conversation.find(params[:id])
-    @reciever = interlocutor(@conversation)
-    @messages = @conversation.messages
-    @message = Message.new
-  end
 
   private
   def conversation_params
-    params.require(:conversation).permit(:sender_id, :recipient_id)
+    params.permit(:sender_id, :recipient_id)
   end
 
   def interlocutor(conversation)
