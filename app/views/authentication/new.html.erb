@@ -2,6 +2,9 @@
 <h1>Sign In</h1>
 <div class="ui form segment">
   <%= form_tag signin_path html: {class: "ui form segment"} do |f| %>
+
+  <%= render 'shared/errors', object: @user %>
+  
   <div class="two fields">
     <div class="field">
       <%= label_tag :email %>

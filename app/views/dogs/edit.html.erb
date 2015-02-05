@@ -6,13 +6,7 @@
 <div class="ui form segment">
   <%= form_for @dog do |f| %>
 
-  <% if @dog.errors.present? %>
-  <ul>
-    <% @dog.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
-  <% end %>
+  <%= render 'shared/errors', object: @dog %>
 
   <div class="three fields">
     <div class="field">

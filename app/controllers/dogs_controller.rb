@@ -57,9 +57,10 @@ class DogsController<ApplicationController
     @dog.update(dog_params)
     if @dog.save
       redirect_to root_path
+      flash[:notice] = "Dog successfully updated."
     else
       render :edit
-      flash[:notice] = "Dog successfully updated"
+      flash[:notice] = "Dog could not be edited"
     end
   end
 

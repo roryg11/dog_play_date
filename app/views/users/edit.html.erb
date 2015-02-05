@@ -3,26 +3,30 @@
   <h1>Editing <%= @user.name %>'s Profile</h1>
 </div>
 
-<div class=>
-
-</div>
-
-<h4>Upload a Profile Picture</h4>
-
-
 <div class="ui form segment">
-  <div class="four fields">
+  <%= form_for @user, url: user_path(@user), html: {class: "ui form"} do |f| %>
+
+  <%= render 'shared/errors', object: @user %>
+  
+  <div class="three fields">
     <div class="field">
-      <label>Name</label>
-      <input placeholder="Name" type= "text">
+      <%= f.label :name %>
+      <div class="field">
+        <%= f.text_field :name %>
+      </div>
     </div>
     <div class="field">
-      <label>E-mail</label>
-      <input type="text" placeholder="E-mail@email.com">
+      <%= f.label :email %>
+      <div class="field">
+        <%= f.email_field :email %>
+      </div>
     </div>
+
     <div class="field">
-      <label>Zipcode</label>
-      <input type="text" placeholder = "94103">
+      <%= f.label :zipcode %>
+      <div class="field">
+        <%= f.text_field :zipcode %>
+      </div>
     </div>
   </div>
 
@@ -32,22 +36,38 @@
       <div class="ui selection dropdown">
         <div class="default text">Gender</div>
         <i class="dropdown icon"></i>
-        <input name="hidden-field" type="hidden">
+        <input id="new-gender" name="user[gender]" type="hidden">
         <div class="menu">
           <div class="item" data-value="Female">Female</div>
           <div class="item" data-value="Male">Male</div>
         </div>
       </div>
     </div>
+
     <div class="field">
-      <label>Age</label>
-      <input type="text" placeholder = "0">
+      <%= f.label :Age %>
+      <div class="field">
+        <%= f.text_field :age %>
+      </div>
     </div>
-  </div>
-  <div class="field">
-    <label>Tell Us A Little Bit About You</label>
-    <textarea></textarea>
+
   </div>
 
-  <div class="ui submit button" id="update" >Update</div>
+  <div class="field">
+    <%= f.label "Tell Us More About You" %>
+    <div class="field">
+      <%= f.text_area :bio %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label "Upload a picture" %>
+    <div class="field">
+      <%= f.file_field :avatar %>
+    </div>
+  </div>
+
+  <%= f.submit "Submit", class: "ui submit button" %>
+
+  <% end  %>
 </div>
