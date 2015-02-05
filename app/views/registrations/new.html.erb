@@ -2,59 +2,82 @@
   <h1>Sign Up</h1>
 </div>
 
-<div class="ui form segment" id="new-form">
-  <form id="form_id" action="/sign-up" method="post">
-      <div class="three fields">
+<div class="ui form segment">
+  <%= form_for @user, url: signup_path, html: {class: "ui form"} do |f| %>
+    <div class="three fields">
+      <div class="field">
+        <%= f.label :name %>
         <div class="field">
-          <label>Name</label>
-          <input placeholder="Name" name="user[name]" id="new-user-name" type= "text">
-        </div>
-        <div class="field">
-          <label>E-mail</label>
-          <input id= "new-email" type="text" name="user[email]" placeholder="E-mail@email.com">
-        </div>
-        <div class="field">
-          <label>Zipcode</label>
-          <input id="new-zipcode" name="user[zipcode]" type="text" placeholder = "94103">
+          <%= f.text_field :name %>
         </div>
       </div>
-      <div class="two fields">
+      <div class="field">
+        <%= f.label :email %>
         <div class="field">
-          <label>Gender</label>
-          <div class="ui selection dropdown">
-            <div class="default text">Gender</div>
-            <i class="dropdown icon"></i>
-            <input id="new-gender" name="hidden-field" type="hidden">
-            <div class="menu">
-              <div class="item" data-value="Female">Female</div>
-              <div class="item" data-value="Male">Male</div>
-            </div>
+          <%= f.email_field :email %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :zipcode %>
+        <div class="field">
+          <%= f.text_field :zipcode %>
+        </div>
+      </div>
+    </div>
+
+    <div class="two fields">
+      <div class="field">
+        <label>Gender</label>
+        <div class="ui selection dropdown">
+          <div class="default text">Gender</div>
+          <i class="dropdown icon"></i>
+          <input id="new-gender" name="user[gender]" type="hidden">
+          <div class="menu">
+            <div class="item" data-value="Female">Female</div>
+            <div class="item" data-value="Male">Male</div>
           </div>
         </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :Age %>
         <div class="field">
-          <label>Age</label>
-          <input id='new-age' type="text" name="user[age]" placeholder = "0">
+          <%= f.text_field :age %>
         </div>
       </div>
-      <div class="field">
-        <label>Tell Us A Little Bit About You</label>
-        <textarea id='new-bio' name="user[bio]"></textarea>
-      </div>
 
-      <div class="field">
-        <label>Upload a Profile Picture</label>
-        <input type= "file" name="user[avatar]">
-      </div>
+    </div>
 
+    <div class="field">
+      <%= f.label "Tell Us More About You" %>
       <div class="field">
-        <label>Password</label>
-        <input type="password" name="user[password]">
+        <%= f.text_area :bio %>
       </div>
+    </div>
 
+    <div class="field">
+      <%= f.label "Upload a picture" %>
       <div class="field">
-        <label>Password Confirmation</label>
-        <input type="password" name="user[password_confirmation]">
+        <%= f.file_field :avatar %>
       </div>
-    <input type="Submit" class="ui submit button" id="signup-submit-button">
-  </form>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %>
+      <div class="field">
+        <%= f.password_field :password %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %>
+      <div class="field">
+        <%= f.password_field :password_confirmation %>
+      </div>
+    </div>
+
+    <%= f.submit "Submit", class: "ui submit button" %>
+
+  <% end  %>
 </div>
