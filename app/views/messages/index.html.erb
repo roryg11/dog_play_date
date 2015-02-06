@@ -4,7 +4,12 @@
     <div class="six wide column":>
       <div class="ui segment">
         <div class="ui comments">
-          <h3 class="ui dividing header" id="<%= @conversation.id %>"></h3>
+          <% if @conversation.sender_id == current_user.id %>
+            <% recipient = User.find(@conversation.recipient_id) %>
+          <% else %>
+            <% recipient = User.find(@conversation.sender_id) %>
+          <% end %>
+          <h3 class="ui dividing header" id="<%= @conversation.id %>"><%= image_tag recipient.avatar, class: "ui avatar image" %>Conversation with <%= recipient.name %></h3>
           <div id="container">
             <% @messages.each do |message| %>
             <% user = User.find(message.user_id) %>
