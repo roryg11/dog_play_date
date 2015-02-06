@@ -25,7 +25,7 @@ $(document).ready(function(){
       <div class="content">\
       <a class="author">' + userName + '</a>\
       <div class="metadata">\
-      <span class="date"> ' + comment.created_at + '</span>\
+      <span class="date">Just Now</span>\
       </div>\
       <div class="text">\
       ' + comment.body + '\

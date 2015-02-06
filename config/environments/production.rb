@@ -2,10 +2,11 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.paperclip_defaults = {
     :storage => :s3,
+    :s3_host_name => 's3-us-west-2.amazon.aws.com',
     :s3_credentials => {
-      :bucket => ENV['dogdating'],
-      :access_key_id => ENV['AKIAIPKGI247CCFVADDQ'],
-      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY=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']
+      :bucket => ENV['S3_BUCKET_NAME'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
   # Code is not reloaded between requests.

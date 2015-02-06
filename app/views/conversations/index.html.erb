@@ -22,7 +22,11 @@
           <div class="content">
             <div class="header"><%= link_to recipient.name, conversation_messages_path(conversation), class: "header" %></div>
             <% if conversation.messages.last %>
-              <div class="description"> <%= conversation.messages.last.body %> </div>
+              <% if conversation.messages.last.body.length > 90 %>
+                <div class="description"> <%= conversation.messages.last.body[0..87] %>... </div>
+              <% else %>
+                <div class="description"> <%= conversation.messages.last.body %> </div>
+              <% end %>
             <% end %>
           </div>
         </div>

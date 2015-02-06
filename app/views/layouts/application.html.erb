@@ -9,17 +9,23 @@
 <body>
 
   <div class="ui inverted fixed menu navbar page grid">
-    <a href="/" class="brand item">Dog Day Date</a>
+    <% home_page = is_active?(root_path) %>
+    <%= link_to "Dog Day Date", root_path, class: "brand item #{home_page}" %>
     <div class="right menu">
       <% if current_user %>
-        <%= link_to current_user.name, user_path(current_user), class: "ui item active visible" %>
-        <%= link_to "Mailbox", conversations_path, class: "item" %>
-        <%= link_to "Search", dogs_path, class: "item" %>
-        <%= link_to "Sign Out", signout_path, class: "item"%>
+        <% profile_page = is_active?(user_path(current_user)) %>
+          <%= link_to current_user.name, user_path(current_user), class: "ui item #{profile_page}" %>
+        <% conversation_page = is_active?(conversations_path) %>
+          <%= link_to "Mailbox", conversations_path, class: "item #{conversation_page}" %>
+        <% search_page = is_active?(dogs_path) %>
+          <%= link_to "Search", dogs_path, class: "item #{search_page}" %>
+          <%= link_to "Sign Out", signout_path, class: "item"%>
       <% else %>
-        <%= link_to 'Sign Up', signup_path, class: "item" %>
-        <%= link_to "Sign-In", signin_path, class: "item"%>
-        <%= link_to "Search", dogs_path, class: "item" %>
+        <% sign_up_page = is_active?(signup_path) %>
+          <%= link_to 'Sign Up', signup_path, class: "item #{sign_up_page}" %>
+        <% sign_in_page = is_active?(signin_path) %>
+          <%= link_to "Sign-In", signin_path, class: "item #{sign_in_page}" %>
+        <%= link_to "Search", dogs_path, class: "item #{search_page}" %>
       <% end %>
     </div>
   </div>
