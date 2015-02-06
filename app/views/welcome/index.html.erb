@@ -14,9 +14,6 @@
   </div>
 </div>
 
-
-<%= @length %>
-
 <div class="ui three column padded page grid">
 
   <% @dogs.in_groups(3) do |column_dogs| %>
@@ -39,8 +36,8 @@
           <div class="meta">
             Adoring Human: <%= link_to dog.user.name, user_path(dog.user), class: "group" %>
           </div>
-          <div class="description"><%= dog.bio %>...<span class="more-info" data-dog-id=<%="#{dog.id}"%> >more</span>
-            <div class="inactive">
+          <div class="description" data-dog-id=<%="#{dog.id}"%>><%= dog.bio %>...<span><strong>more</strong></span>
+            <div class="inactive" id="more-info">
               <ul>
                 <li><strong>Breed: </strong> <%= dog.breed %> </li>
                 <li><strong>Age: </strong> <%= dog.age %></li>

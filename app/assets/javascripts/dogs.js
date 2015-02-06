@@ -1,21 +1,19 @@
 $(document).ready(function(){
-  $('.description').on('click', 'span', function(){
-    var dogId = $(this).data('dog-id');
-    var div = $(this).parent().find('div');
+  $('.fluid').on('click', function(){
+    var div = $(this).find('#more-info');
+    var span = $(this).find('span');
     div.fadeIn().toggleClass('inactive');
     if(div.hasClass('inactive')){
-      $(this).text('more');
+      span.text('more');
       div.fadeOut().toggleClass('inactive');
     }else{
-      $(this).text('less');
+      span.text('less');
       }
   });
 
   $('.card').on('click', 'div.header', function(){
-    console.log("YOU CLICKED A DOG!");
     var dogId = $(this).data('dog-id');
     var imagePath = $(this).find('img').attr('src');
-    console.log(imagePath);
     var url = '/dogs/' + dogId
     $.ajax(url, {type: 'get'}).done(function(data){
 
