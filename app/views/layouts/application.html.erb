@@ -16,10 +16,13 @@
     <div class="right menu">
       <% if current_user %>
         <%= link_to current_user.name, user_path(current_user), class: "ui item active visible" %>
+        <%= link_to "Mailbox", conversations_path, class: "item" %>
+        <%= link_to "Search", dogs_path, class: "item" %>
         <%= link_to "Sign Out", signout_path, class: "item"%>
       <% else %>
         <%= link_to 'Sign Up', signup_path, class: "item" %>
         <%= link_to "Sign-In", signin_path, class: "item"%>
+        <%= link_to "Search", dogs_path, class: "item" %>
       <% end %>
     </div>
   </div>
@@ -31,6 +34,15 @@
         <p id="notice" class="text-center"><%= notice %></p>
       </div>
     </div>
+  <% end %>
+
+  <% if alert %>
+  <div class="ui error message">
+    <i class="close icon"></i>
+    <div class="header">
+      <p id="notice" class="text-center"><%= alert %></p>
+    </div>
+  </div>
   <% end %>
 
 <%= yield %>
