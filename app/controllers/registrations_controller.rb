@@ -11,7 +11,7 @@ class RegistrationsController < ApplicationController
       redirect_to new_dog_path
     else
       render :new
-      flash[:notice] = "Your registration could not be completed"
+      flash[:alert] = "Your registration could not be completed"
     end
   end
 

@@ -23,8 +23,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Your information was successfully updated."
     else
       render :edit
-      flash[:notice] = "Your information could not be saved."
-
+      flash[:alert] = "Your information could not be saved."
     end
   end
 

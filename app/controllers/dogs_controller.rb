@@ -37,9 +37,11 @@ class DogsController<ApplicationController
   def create
     @dog = current_user.dogs.new(dog_params)
     if @dog.save
+      flash[:notice] = "Your Pup has been added to the family"
       redirect_to root_path
     else
       render :new
+      flash[:alert] = "Your furry friend could not be saved."
     end
   end
 
@@ -60,7 +62,7 @@ class DogsController<ApplicationController
       flash[:notice] = "Dog successfully updated."
     else
       render :edit
-      flash[:notice] = "Dog could not be edited"
+      flash[:alert] = "Dog could not be edited"
     end
   end
 
