@@ -7,7 +7,7 @@
 
   <% if current_user %>
   <div class="ui segment">
-    <div class="content">
+    <div class="content" data-user-zipcode="<%= @user.zipcode %>">
       <p><%= @user.email %></p>
       <p><%= @user.zipcode %></p>
       <p><%= @user.age %></p>
@@ -67,8 +67,9 @@
 </div>
 <% end %>
 
-
 <div class="ui segment">
-  <div id="map-canvas">
+  <div class="header">
+    <h3>Dog Parks in Your Area</h3>
   </div>
+  <div id="map-canvas" style="width: 400px; height: 300px;"></div>
 </div>
