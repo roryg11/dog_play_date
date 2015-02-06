@@ -44,8 +44,8 @@
             <%= dog.bio %>
           </div>
         </div>
-      </div>
 
+      <div class="ui bottom attached segment">
       <% if current_user && current_user.id == @user.id %>
       <div class="ui inverted teal button">
         <%= link_to "Edit", edit_dog_path(dog) %>
@@ -56,6 +56,9 @@
       <% end %>
       <% end %>
     </div>
+  </div>
+  <div class ="one wide field"></div>
+  </div>
     <% end %>
 </div>
 

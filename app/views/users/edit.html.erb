@@ -7,7 +7,7 @@
   <%= form_for @user, url: user_path(@user), html: {class: "ui form"} do |f| %>
 
   <%= render 'shared/errors', object: @user %>
-  
+
   <div class="three fields">
     <div class="field">
       <%= f.label :name %>
@@ -36,7 +36,7 @@
       <div class="ui selection dropdown">
         <div class="default text">Gender</div>
         <i class="dropdown icon"></i>
-        <input id="new-gender" name="user[gender]" type="hidden">
+        <%= f.text_field :gender, type: "hidden" %>
         <div class="menu">
           <div class="item" data-value="Female">Female</div>
           <div class="item" data-value="Male">Male</div>

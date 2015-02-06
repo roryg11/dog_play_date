@@ -1,7 +1,7 @@
 <h3>Edit Dog Info</h3>
 
-<%= image_tag current_user.avatar, class: "ui avatar image" %>
-<%= current_user.name %>
+<%= image_tag @dog.image, class: "ui avatar image" %>
+<%= @dog.name %>
 
 <div class="ui form segment">
   <%= form_for @dog do |f| %>
@@ -35,7 +35,7 @@
       <div class="ui selection dropdown">
         <div class="default text">Gender</div>
         <i class="dropdown icon"></i>
-        <input id="new-gender" name="dog[gender]" type="hidden">
+        <%= f.text_field :gender, type: "hidden" %>
         <div class="menu">
           <div class="item" data-value="Female">Female</div>
           <div class="item" data-value="Male">Male</div>
@@ -47,7 +47,7 @@
       <div class="ui selection dropdown">
         <div class="default text">Size</div>
         <i class="dropdown icon"></i>
-        <input id="new-dog-size" name="dog[size]" type="hidden">
+        <%= f.text_field :size, type: "hidden" %>
         <div class="menu">
           <div class="item" data-value="Small">Small</div>
           <div class="item" data-value="Medium">Medium</div>
@@ -62,7 +62,7 @@
       <div class="ui selection dropdown">
         <div class="default text">Play</div>
         <i class="dropdown icon"></i>
-        <input id="new-play-attr" name="dog[play]" type="hidden">
+        <%= f.text_field :play, type: "hidden" %>
         <div class="menu">
           <div class="item" data-value="toy-oriented">Toy-Oriented</div>
           <div class="item" data-value="Food-Oriented">Food-Oriented</div>
@@ -79,7 +79,7 @@
       <div class="ui selection dropdown">
         <div class="default text">Personality</div>
         <i class="dropdown icon"></i>
-        <input id="new-play-attr" name="dog[personality]" type="hidden">
+        <%= f.text_field :personality, type: "hidden" %>
         <div class="menu">
           <div class="item" data-value="submissive">Submissive</div>
           <div class="item" data-value="Dominant">Dominant</div>
