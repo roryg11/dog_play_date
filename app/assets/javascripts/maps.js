@@ -27,12 +27,14 @@ function initialize() {
         position: results[0].geometry.location,
       });
 
+
       var request = {
         location: latlng,
         radius: '1000',
         types: ['park'],
         rankBy: google.maps.places.RankBy.PROMINENCE
-      }
+      };
+      infowindow = new google.maps.InfoWindow();
       var service =  new google.maps.places.PlacesService(map);
       service.nearbySearch(request, callback);
     } else {
@@ -57,20 +59,34 @@ function callback(results, status){
       var contentDiv = document.createElement('div');
       contentDiv.className = "content";
       itemDiv.appendChild(contentDiv);
-      var placeHeader = document.createElement('a');
+      var placeHeader = document.createElement('div');
       placeHeader.className = "header";
       placeHeader.innerText = results[i]["name"];
+      placeHeader.id = results[i]["name"];
+      var place_name = placeHeader.innerText;
       contentDiv.appendChild(placeHeader);
     }
   }
 }
 
 
-function createMarker(results){
-  console.log(results);
+function createMarker(place){
+  var placeLoc = place.geometry.location;
   var marker = new google.maps.Marker({
     map: map,
-    position: results.geometry.location
+    position: place.geometry.location
+  });
+  google.maps.event.addListener(marker, 'mouseover', function() {
+    infowindow.setContent(place.name);
+    var place_name = document.getElementById(place.name);
+    infowindow.open(map, this);
+      place_name.style.color = "#00b2f3";
+  });
+  google.maps.event.addListener(marker, 'mouseout', function() {
+    infowindow.setContent(place.name);
+    var place_name = document.getElementById(place.name);
+    place_name.style.color = "rgba(0, 0, 0, 0.8)";
+    infowindow.open(map, this);
   });
 }
 
