@@ -70,9 +70,16 @@
 </div>
 <% end %>
 
-<div class="ui segment">
-  <div class="header">
-    <h3>Dog Parks in Your Area</h3>
+<div class="header">
+  <h3>Dog Parks in Your Area</h3>
+</div>
+
+<div class="ui segment two column grid">
+  <div class="column">
+    <div id="map-canvas" style="width: 300px; height: 300px;"></div>
   </div>
-  <div id="map-canvas" style="width: 400px; height: 300px;"></div>
+  <div class="column">
+    <div class="ui divided list" id="map-segment">
+    </div>
+  </div>
 </div>
