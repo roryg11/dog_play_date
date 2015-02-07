@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    @dogs = Dog.all
+    @dogs = Dog.all.shuffle
   end
 end

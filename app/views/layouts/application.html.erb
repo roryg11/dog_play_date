@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DogPlayDate</title>
+  <title>Puppy Love</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -10,7 +10,7 @@
 
   <div class="ui inverted fixed menu navbar page grid">
     <% home_page = is_active?(root_path) %>
-    <%= link_to "Dog Day Date", root_path, class: "brand item #{home_page}" %>
+    <%= link_to "Puppy Love", root_path, class: "brand item #{home_page}" %>
     <div class="right menu">
       <% if current_user %>
         <% profile_page = is_active?(user_path(current_user)) %>
