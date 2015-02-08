@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   validates :name, :email, :zipcode,  presence: true
   validates :email, uniqueness: true
+  validates :password, length: { minimum: 4 }
+  validates :name, length: { minimum: 2 }
 
   has_many :dogs
   has_secure_password
