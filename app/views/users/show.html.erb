@@ -18,48 +18,48 @@
   <% end %>
 
 
-    <% if current_user && current_user.id == @user.id %>
-      <div class="ui button">
-        <%= link_to "Edit", edit_user_path(@user) %>
-      </div>
-    <% end %>
+  <% if current_user && current_user.id == @user.id %>
+  <div class="ui button">
+    <%= link_to "Edit", edit_user_path(@user) %>
+  </div>
+  <% end %>
 
 </div>
 
 <div class="ui segment">
   <a class="ui ribbon label"><%= @user.name %>'s Dogs</a>
-    <% @user.dogs.in_groups(3) do |column_dogs| %>
-    <div class="column">
-      <% column_dogs.each do |dog| %>
-      <% break if dog.nil? %>
-      <div class="ui card field">
-        <div class="content">
-          <div class="header" data-dog-id ="<%= dog.id %>">
-            <div class="ui avatar image">
-              <%= image_tag(dog.image) %>
-            </div>
-            <%= dog.name %>
+  <% @user.dogs.in_groups(3) do |column_dogs| %>
+  <div class="column">
+    <% column_dogs.each do |dog| %>
+    <% break if dog.nil? %>
+    <div class="ui card field">
+      <div class="content">
+        <div class="header" data-dog-id ="<%= dog.id %>">
+          <div class="ui avatar image">
+            <%= image_tag(dog.image) %>
           </div>
-          <div class="description">
-            <%= dog.bio %>
-          </div>
+          <%= dog.name %>
         </div>
+        <div class="description">
+          <%= dog.bio %>
+        </div>
+      </div>
 
       <div class="ui bottom attached segment">
-      <% if current_user && current_user.id == @user.id %>
-      <div class="ui inverted teal button">
-        <%= link_to "Edit", edit_dog_path(dog) %>
+        <% if current_user && current_user.id == @user.id %>
+        <div class="ui inverted teal button">
+          <%= link_to "Edit", edit_dog_path(dog) %>
+        </div>
+        <div class="ui button">
+          <%= link_to 'Delete Dog', dog_path(dog), method: :delete, data: {confirm: "Are you sure?"}  %>
+        </div>
+        <% end %>
+        <% end %>
       </div>
-      <div class="ui button">
-        <%= link_to 'Delete Dog', dog_path(dog), method: :delete, data: {confirm: "Are you sure?"}  %>
-      </div>
-      <% end %>
-      <% end %>
     </div>
+    <div class ="one wide field"></div>
   </div>
-  <div class ="one wide field"></div>
-  </div>
-    <% end %>
+  <% end %>
 </div>
 
 <% if current_user && current_user.id == @user.id %>
@@ -83,3 +83,28 @@
     </div>
   </div>
 </div>
+
+<script charset="utf-8" id="dog-modal" text="text/x-handlebars-template">
+<div class="ui modal">
+  <i class="close icon"></i>
+  <div class="header">{{name}}</div>
+  <div class="content">
+    <div class="ui medium circular image">
+      <img src ={{image}}>
+    </div>
+    <div class="description">
+      <h3>A Little Bit About Me</h3>
+      <p>{{bio}}</p>
+      <ul>
+        <li>Breed:{{breed}}</li>
+        <li>Gender: {{gender}}</li>
+        <li>Play Type:{{play}}</li>
+        <li>Personality Type: {{personality}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui button">OK</div>
+  </div>
+</div>
+</script>

@@ -17,25 +17,22 @@ $(document).ready(function(){
     var url = '/dogs/' + dogId
     $.ajax(url, {type: 'get'}).done(function(data){
 
-      var dogModal = '<div class="ui modal">\
-      <i class="close icon"></i>\
-      <div class="header">' +data["name"]+'</div>\
-      <div class="content">\
-      <div class="ui medium circular image">\
-      <img src ="'+imagePath+'">\
-      </div>\
-      <div class="description"><h3>A Little Bit About Me</h3>\
-      <p>'+data["bio"]+'</p>\
-      <ul><li>Breed: '+data["breed"]+'</li><li>Gender: '+data["gender"]+'</li>\
-      <li>Play Type: '+data["play"]+'</li><li>Personality Type: '+data["personality"]+'</li></ul>\
-      </div>\
-      </div>\
-      <div class="actions">\
-      <div class="ui button">OK</div>\
-      </div>\
-      </div>'
+      var source = $('#dog-modal').html();
+      var template = Handlebars.compile(source);
+
+      var context = {
+        name: data.name,
+        image: imagePath,
+        bio: data.bio,
+        breed: data.breed,
+        gender: data.gender,
+        play: data.play,
+        personality: data.personality
+        }
+
+        var html = template(context);
 ;
-      $('body').append(dogModal);
+      $('body').append(html);
       $('.ui.modal')
       .modal('show')
     });
