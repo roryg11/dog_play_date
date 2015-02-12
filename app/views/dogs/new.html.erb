@@ -3,7 +3,7 @@
 <%= image_tag current_user.avatar, class: "ui avatar image" %>
 <%= current_user.name %>
 
-<div class="ui form segment">
+<div class="ui form segment" id="new-dog-form">
   <%= form_for @dog do |f| %>
 
   <%= render 'shared/errors', object: @dog %>
