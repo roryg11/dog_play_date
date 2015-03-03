@@ -5,7 +5,7 @@ class DogsController<ApplicationController
     @dogs = Dog.all
     if !params[:g].blank?
       puts "filtering by gender"
-      @dogs = @dogs.where(:gender=> params[:g])
+      @dogs = @dogs.where(gender: params[:g])
     end
     if !params[:n].blank?
       puts "filtering by gender"

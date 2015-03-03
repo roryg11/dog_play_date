@@ -18,7 +18,6 @@ $(document).ready(function(){
     var userName = $('#user_name').data('id');
     var source = $('#add-newest-comment').html();
     var template = Handlebars.compile(source);
-    console.log(image);
     var context = {
       userImage: image,
       author: userName,

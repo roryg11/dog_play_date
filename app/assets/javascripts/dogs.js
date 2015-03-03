@@ -31,10 +31,22 @@ $(document).ready(function(){
         }
 
         var html = template(context);
-;
+
       $('body').append(html);
       $('.ui.modal')
       .modal('show')
     });
-  })
+  });
+
+  // $(window).scroll(function(){
+  //   if($(window).scrollTop() >= $(document).height() - $(window).height()){
+  //     $.ajax('/dogs', {type: 'get'}).done(function(dogs){
+  //       var source = $('#added-dogs').html();
+  //       var template = Handlebars.compile(source);
+  //
+  //       var dog = template(dogs[0]);
+  //       $('#dog-table').append(dog);
+  //     });
+  //   }
+  // });
 });
