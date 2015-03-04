@@ -1,0 +1,2 @@
+class Size < Filter
+end

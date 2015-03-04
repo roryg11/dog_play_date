@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
-  resources :users
+  resources :users do
+    resources :filters
+  end
 
   get '/sign-up' => 'registrations#new', as: :signup
   post '/sign-up' => 'registrations#create'

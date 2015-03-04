@@ -11,4 +11,6 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   has_many :conversations, :foreign_key => :sender_id
+  has_many :filters
+  delegate :breeds, :sizes, :plays, :ages, :personalities, :blocked_user_ids, to: :filters
 end

@@ -1,0 +1,2 @@
+class BlockedUser < Filter
+end

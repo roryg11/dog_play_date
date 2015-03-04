@@ -1,0 +1,2 @@
+class Play < Filter
+end
