@@ -31,7 +31,7 @@ class FiltersController < ApplicationController
 
   private
   def filter_params
-    params.require(:filter).permit(:age, :gender, :size, :personality, :play, :blocked_user_id)
+    params.require(:filter).permit(:age, :gender, :size, :personality, :play, :blocked_user_id, :location)
   end
 
 end
