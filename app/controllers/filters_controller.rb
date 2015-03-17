@@ -1,14 +1,16 @@
 class FiltersController < ApplicationController
+  before_action :set_filter, only: [:show, :edit, :update, :destroy]
+  before_action :set_type
   before_action do
     @user = current_user
   end
 
   def index
-    @filters = @user.filters.all
+    @filters = Filter.where(type: type)
   end
 
   def new
-    @filter = @user.filters.new
+    @filter = Filter.new(type: type)
   end
 
   def create
@@ -30,8 +32,25 @@ class FiltersController < ApplicationController
   end
 
   private
+
+  def set_type
+    @type = type
+  end
+
+  def type
+    Filter.types.include?(params[:type]) ? params[:type] : "Filter"
+  end
+
+  # def type_class
+  #   type.constantize
+  # end
+
+  def set_filter
+    @filter = type_class.find(params[:id])
+  end
+
   def filter_params
-    params.require(:filter).permit(:age, :gender, :size, :personality, :play, :blocked_user_id, :location)
+    params.require(type.underscore.to_sym).permit(:type, :content)
   end
 
 end

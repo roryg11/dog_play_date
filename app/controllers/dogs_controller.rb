@@ -28,6 +28,10 @@ class DogsController<ApplicationController
       dog_age = params[:a].downcase
       @dogs = @dogs.where("LOWER (age) LIKE ?", "%#{dog_age}%")
     end
+
+    user.filters.each do |filter|
+      @dogs = filter.filter(@dogs)
+    end
   end
 
   def new

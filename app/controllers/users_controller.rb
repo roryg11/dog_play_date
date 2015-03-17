@@ -10,6 +10,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @filters=@user.filters.all
+
+    @dogs = Dog.all
+    @filters.each do |filter|
+      @dogs = filter.filter(@dogs)
+    end
   end
 
   def edit

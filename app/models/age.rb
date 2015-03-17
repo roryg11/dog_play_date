@@ -1,5 +1,5 @@
 class Age < Filter
   def filter(dogs)
-    dogs = dogs.where(age: age)
+    dogs.where({age: "#content"})
   end
 end

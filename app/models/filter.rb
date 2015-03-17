@@ -1,10 +1,12 @@
 class Filter < ActiveRecord::Base
   belongs_to :user
+  self.inheritance_column = :type
+  
   def self.types
-    %w(Breed Size Age Personality Play BlockedUser)
+    %w(Breed Size Age Personality Play BlockedUser Gender Location)
   end
 
-  def filter
+  def filter(_)
     raise 'Abstract Method'
   end
 
@@ -14,4 +16,6 @@ class Filter < ActiveRecord::Base
   scope :personalities, -> {where(type: 'Personality')}
   scope :plays, -> {where(type: 'Play')}
   scope :blocked_user_ids, -> {where(type: 'BlockedUser')}
+  scope :gender, -> {where(type: 'Gender')}
+  scope :location, -> {where(type: 'Location')}
 end

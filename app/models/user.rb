@@ -12,5 +12,5 @@ class User < ActiveRecord::Base
 
   has_many :conversations, :foreign_key => :sender_id
   has_many :filters
-  delegate :breeds, :sizes, :plays, :ages, :personalities, :blocked_user_ids, to: :filters
+  delegate :breeds, :sizes, :plays, :ages, :personalities, :blocked_user_ids, :genders, :locations, to: :filters
 end

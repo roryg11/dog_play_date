@@ -28,23 +28,18 @@
   <% if current_user && current_user.id == @user.id  %>
   <a class="ui ribbon label"><%= @user.name %>'s Potential Matches</a>
   <div class="ui segment">
-    <p>MATCH</p>
+    <%= @dogs.map(&:name) %>
   </div>
   <% end  %>
 
   <a class="ui ribbon label"><%= @user.name %>'s Dog Preferences</a>
   <div class="ui segment">
     <% @filters.each do |filter| %>
-    <%= filter.type %>
-    <%= filter.breed %>
-    <%= filter.age %>
-    <%= filter.gender %>
-    <%= filter.play %>
-    <%= filter.personality %>
+      <%= filter.type %>: <%= filter.content %>
     <% end %>
   </div>
 
-  <% if current_user && current_user.id== @user.id  %>
+  <% if current_user && current_user.id == @user.id  %>
   <div class="ui button">
     <%= link_to "Change Preferences", new_user_filter_path(@user) %>
   </div>
